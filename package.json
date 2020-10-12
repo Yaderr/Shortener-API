@@ -1,0 +1,21 @@
+{
+  "name": "shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fastify": "^3.5.1",
+    "fastify-helmet": "^5.0.3",
+    "fastify-mongodb": "^2.0.1",
+    "fastify-static": "^3.2.1",
+    "nanoid": "^3.1.12",
+    "pino-pretty": "^4.3.0"
+  }
+}
