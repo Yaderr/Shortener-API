@@ -10,7 +10,6 @@ const fastify = require('fastify')({
     disableRequestLogging: false
 })
 
-const port = process.env.PORT || 8080
 console.log(port)
 const mdbUrl = process.env.DATABASE_URL
 
@@ -31,7 +30,7 @@ fastify.register(require('fastify-mongodb'),{
     })
 const start = async() => {
     try {
-        await fastify.listen(port)
+        await fastify.listen(process.env.PORT || 8080)
     } catch(err){
         fastify.log.error(err)
         process.exit(1)
