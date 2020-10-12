@@ -29,7 +29,10 @@ fastify.register(require('fastify-mongodb'),{
     })
 const start = async() => {
     try {
-        await fastify.listen(process.env.PORT || 8080)
+        await fastify.listen(process.env.PORT || 8080, function (err) {
+            if (err) throw err
+            console.log(`server listening on ${fastify.server.address().port}`)
+        })
     } catch(err){
         fastify.log.error(err)
         process.exit(1)
