@@ -11,6 +11,7 @@ const fastify = require('fastify')({
 })
 
 const port = process.env.PORT || 8080
+console.log(port)
 const mdbUrl = process.env.DATABASE_URL
 
 fastify.register(require('fastify-helmet'))
