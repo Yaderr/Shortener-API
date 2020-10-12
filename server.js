@@ -10,7 +10,6 @@ const fastify = require('fastify')({
     disableRequestLogging: false
 })
 
-console.log(port)
 const mdbUrl = process.env.DATABASE_URL
 
 fastify.register(require('fastify-helmet'))
