@@ -66,10 +66,6 @@ exports.default = async function (fastify, opts) {
             links: res
         })
     })
-    .get('/i', async (req, reply) => {
-        const res = await shortenerServices.getIndex()
-        reply.send(res)
-    })
     .post('/shorten', shortenOptionsPOST,async (req, reply) => {
         const { body } = req
         const res = await shortenerServices.creteNewLink(body)
