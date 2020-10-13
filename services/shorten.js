@@ -2,12 +2,21 @@ const nanoid = require('nanoid')
 
 class ShortenServices {
 
-    /*
-        Create New link
+    /**
+    * Contructor 
+    * @param {db} 
     */
-   constructor(db){
-       this.db = db;
-   }
+    constructor(db){
+        this.db = db;
+    }
+
+    /**
+     * Function for Create new link
+     * 
+     * @param { { newLink: object } } { newLink = {} }
+     * @memberof ShortenServices
+     * @returns {Promise<{ _id: ObjectId, name: string, link: string, url_id: string}>} object
+     */
     async creteNewLink(newLink){
         if(!newLink.url_id){
             newLink.url_id = nanoid.nanoid(15);        
@@ -20,25 +29,28 @@ class ShortenServices {
         
         throw new Error(`The Link ${exist.url_id} is already create for ${exist.link} `)
     }
-    /*
-        @get all links
-    */
-    async getAllLinks(db){
+    
+
+    /**
+     * Function for Get all link from links collection of shortener db
+     * 
+     * @memberof ShortenServices
+     * @returns {Promise<{ _id: ObjectId, name: string, link: string, url_id: string}>[]} array
+     */
+    async getAllLinks(){
         console.log(this)
         const links = await this.db.collection('links').find({}).toArray()
         return links
     }
-    /*
-        Find by url_id
-    */
+    /**
+     * Function for Get link by url_id
+     * @param { {url_id: string} } { url_id }
+     * @memberof ShortenServices
+     * @returns {Promise<{ _id: ObjectId, name: string, link: string, url_id: string}>} object
+     */
 
     async getByUrlId(url_id){
-        const link = await this.db.collection('links').find({url_id}).toArray()
-        return link[0]
-    }
-
-    async getIndex(){
-        const link = await this.db.collection('links').listIndexes()
+        const link = await this.db.collection('links').findOne({url_id})
         return link
     }
 }

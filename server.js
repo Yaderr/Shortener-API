@@ -31,7 +31,7 @@ const start = async() => {
     try {
         await fastify.listen(process.env.PORT || 8080,'0.0.0.0', function (err) {
             if (err) throw err
-            console.log(`server listening on ${fastify.server.address().port}`)
+            //console.log(`server listening on ${fastify.server.address().port}`)
         })
     } catch(err){
         fastify.log.error(err)
