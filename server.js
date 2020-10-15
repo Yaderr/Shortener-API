@@ -34,9 +34,8 @@ fastify.register(require('fastify-mongodb'),{
 })
 
 fastify.ready(err => {
-    if (err) throw err
-    fastify.swagger()
-  })
+  if (err) throw err
+})
 const start = async() => {
   try {
     await fastify.listen(process.env.PORT || 5000,'0.0.0.0', function (err) {
