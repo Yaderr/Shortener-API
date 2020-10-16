@@ -67,7 +67,8 @@ exports.default = async function (fastify, opts) {
         })
     })
     .post('/shorten', shortenOptionsPOST,async (req, reply) => {
-        const { body } = req
+        const body = JSON.parse(req.body)
+        console.log(body)
         const res = await shortenerServices.creteNewLink(body)
         reply.send({
             ok: true,

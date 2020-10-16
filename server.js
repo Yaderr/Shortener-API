@@ -4,15 +4,13 @@ const path = require('path')
 
 const fastify = require('fastify')({
   logger: {
-      prettyPrint: true
+    prettyPrint: true
   },
   disableRequestLogging: false
 })
 
 
-fastify.register(require('fastify-cors'), { 
-  
-})
+fastify.register(require('fastify-cors'), {})
 
 
 const mdbUrl = process.env.DATABASE_URL
