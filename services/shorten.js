@@ -21,7 +21,7 @@ class ShortenServices {
         if(!newLink.url_id){
             newLink.url_id = nanoid.nanoid(15);        
         }
-        const exist = await this.db.collection('links').findOne(newLink)
+        const exist = await this.db.collection('links').findOne({url_id: newLink.url_id})
         if(!exist){
             const link = await this.db.collection('links').insertOne(newLink)
             return link.ops[0]
